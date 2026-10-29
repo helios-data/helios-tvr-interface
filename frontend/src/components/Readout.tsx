@@ -5,21 +5,17 @@ interface ReadoutProps {
     label: string;
     value: number | null;   //null = unknown = no data show as '-'
     unit?: string;
-    decimals?: number;      //digits after decimal point 
+    decimals?: number;      //digits after decimal point, default 2
     stale?: boolean;        //true = data is old, update needed
 }
 
 //build readout component
-export const Readout = ({ label, value, unit, decimals, stale}: ReadoutProps) => {
+export const Readout = ({ label, value, unit, decimals = 2, stale = false }: ReadoutProps) => {
     //false when theres no data yet or the reading is broken (NaN, Inf)
-    const hasValue = value !== null && Number.isFinite(value);
-
-    let displayValue = '-'; 
-    if (hasValue) {
-        displayValue = decimals !== undefined ? value.toFixed(decimals) : value.toString();
-    }
-
-    return ( 
+    const hasValue = Number.isFinite(value);
+    const displayValue = hasValue ? value.toFixed(decimals) : '-';
+    
+    return (
         <div className={`readout-container ${stale ? 'readout-stale' : ''}`}>
             <span className="readout-label">{label}</span>
             <span className="readout-value">
@@ -27,5 +23,5 @@ export const Readout = ({ label, value, unit, decimals, stale}: ReadoutProps) =>
                 {hasValue && unit && <span className="readout-unit"> {unit}</span>}
             </span>
         </div>
-    )
-}
+    );
+};
