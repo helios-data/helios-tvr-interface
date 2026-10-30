@@ -1,0 +1,40 @@
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* the colored dot, uses the same color as the text */
+.status-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.status-ok {
+    background-color: #e6f4ea;
+    color: #1e7b34;
+}
+
+.status-warning {
+    background-color: #fff4d6;
+    color: #8a6100;
+}
+
+.status-error {
+    background-color: #fde8e8;
+    color: #b42318;
+}
+
+.status-nodata {
+    background-color: #f0f0f0;
+    color: #666;
+}
