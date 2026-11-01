@@ -1,6 +1,7 @@
 /* shared styles for every button */
 .button {
-    display: inline-flex;
+    /*  */
+    display: inline-flex; 
     align-items: center;
     justify-content: center;
     gap: 6px;
