@@ -1,5 +1,4 @@
 import { type ReactNode } from "react";
-import './Panel.css';
 
 //define the props interface including ReactNode
 interface PanelProps {
@@ -12,13 +11,13 @@ interface PanelProps {
 //changed to arrow function without using React.FC
 export const Panel = ({ title, children, className = '' }: PanelProps) => {
     return (
-        <div className={`panel-container ${className}`}>
+        <div className={`my-4 overflow-hidden rounded-[5px] border border-[#ccc] bg-white shadow-[0_2px_4px_rgba(0,0,0,0.1)] ${className}`}>
             {title && (
-                <div className="panel-header">
-                    <h3 className="panel-title">{title}</h3>
+                <div className="border-b border-[#ccc] bg-[#f5f5f5] px-4 py-3">
+                    <h3 className="m-0 text-xl">{title}</h3>
                 </div>
             )}
-            <div className="panel-body">
+            <div className="p-4">
                 {/*this renders the ReactNode*/}
                 {children}
             </div>
