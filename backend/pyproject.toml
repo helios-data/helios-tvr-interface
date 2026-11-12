@@ -1,0 +1,12 @@
+[project]
+name = "tvr-backend"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.162.5",
+    "helios-python-sdk",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[tool.uv.sources]
+helios-python-sdk = { path = "../helios-python-sdk", editable = true }
