@@ -10,7 +10,7 @@ interface ReadoutProps {
 //build readout component
 export const Readout = ({ label, value, unit, decimals = 2, stale = false }: ReadoutProps) => {
     //false when theres no data yet or the reading is broken (NaN, Inf)
-    const hasValue = Number.isFinite(value);
+    const hasValue = value !== null && Number.isFinite(value);
     const displayValue = hasValue ? value.toFixed(decimals) : '-';
     
     return (
