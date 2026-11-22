@@ -10,3 +10,9 @@ dependencies = [
 
 [tool.uv.sources]
 helios-python-sdk = { path = "../helios-python-sdk", editable = true }
+
+[dependency-groups]
+dev = [
+    "betterproto2-compiler>=0.10.1",
+    "grpcio-tools>=1.85.3",
+]
