@@ -1,15 +1,17 @@
 import asyncio
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from app.sources.fake import fake_data_stream
 
 app = FastAPI()
+
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    print("Client connected")
+    counter = 0 #starts at 0 when client connect
     try:
-        async for message in fake_data_stream():
-            await websocket.send_json(message)
+        while True:
+            await websocket.send_json({"message_number": counter})
+            counter += 1
+            await asyncio.sleep(1) #wait for 1s 
     except WebSocketDisconnect:
-        print("Client disconnected")  # browser tab close
+        print("Client disconnected")  # browser tab closed
